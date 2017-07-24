@@ -9,11 +9,12 @@ dependencies:
     - git config --global user.email circleci@circleci
     - git config --global user.name CircleCI
     - mvn --fail-never dependency:go-offline || true
+
 deployment:
   staging:
     branch: master
     commands:
-      - | # Test multiline yaml support
+      - | 
         if [[ `git log -1` =~ "[maven-release-plugin]" ]]; then
             echo "Ignoring release plugin generated version"
         else
