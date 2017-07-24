@@ -13,8 +13,8 @@ dependencies:
     - git config --global user.email circleci@circleci
     - git config --global user.name CircleCI
     - mvn --fail-never dependency:go-offline || true
-#deployment:
-#  staging:
-#    branch: master
-#    commands:
-#      - [[ `git log -1` =~ "[maven-release-plugin]" ]] || mvn -B release:prepare
+deployment:
+  staging:
+    branch: master
+    commands:
+      - [[ `git log -1` =~ "[maven-release-plugin]" ]] || mvn -B release:prepare
