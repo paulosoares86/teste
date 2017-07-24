@@ -37,14 +37,26 @@
 		</dependency>
 	</dependencies>
 
+
+	<scm>
+		<connection>scm:git:file://D:\Dev\gitremotetest\testpp</connection>
+		<developerConnection>scm:git:file://D:\Dev\gitremotetest\testpp</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.1</version>
+			</plugin>
 		</plugins>
 	</build>
-
 
 </project>
