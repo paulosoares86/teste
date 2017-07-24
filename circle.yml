@@ -34,4 +34,4 @@ jobs:
           key: v1-dependencies-{{ checksum "pom.xml" }}
         
       # make release
-      - run: mvn release:prepare release:perform
+      - run: mvn -B release:prepare release:perform
