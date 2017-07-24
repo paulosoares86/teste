@@ -1,21 +1,23 @@
+general:
+  artifacts:
+    - "target/app.jar"
 machine:
-
   environment:
     SPRING_PROFILES_ACTIVE: test
-    MAVEN_OPTS: -Xmx3200m
   timezone:
     America/Bogota
   java:
     version: oraclejdk8
-
 dependencies:
   override:
     - git config --global user.email circleci@circleci
     - git config --global user.name CircleCI
     - mvn --fail-never dependency:go-offline || true
-
+test:
+  override:
+    - mvn clean install -s settings.xml
 deployment:
-  releases:
+  staging:
     branch: master
     commands:
       - [[ `git log -1` =~ "[maven-release-plugin]" ]] || mvn -B release:prepare
