@@ -36,5 +36,9 @@ jobs:
       - run: git config --global user.email "you@example.com"
       - run: git config --global user.name "Your Name"
 
-      # make release
-      - run: mvn -B release:prepare
+  deployment:
+    releases:
+      branch: master
+        # make release
+      commands:
+        - mvn -B release:prepare
