@@ -1,11 +1,6 @@
-general:
-  artifacts:
-    - "target/app.jar"
 machine:
   environment:
     SPRING_PROFILES_ACTIVE: test
-  timezone:
-    America/Bogota
   java:
     version: oraclejdk8
 dependencies:
@@ -17,4 +12,4 @@ deployment:
   staging:
     branch: master
     commands:
-      - sh eval '[[ `git log -1` =~ "[maven-release-plugin]" ]] || mvn -B release:prepare'
+      - sh mvn_prepare.sh

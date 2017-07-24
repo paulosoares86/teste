@@ -1,0 +1,1 @@
+[[ `git log -1` =~ "[maven-release-plugin]" ]] || mvn -B release:prepare
