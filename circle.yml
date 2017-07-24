@@ -37,4 +37,4 @@ jobs:
       - run: git config --global user.name "Your Name"
 
       # make release
-      - run: mvn -B release:prepare release:perform
+      - run: mvn -B release:prepare

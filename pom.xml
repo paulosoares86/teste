@@ -18,6 +18,19 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>bancodebogota-releases</name>
+			<url>https://bancodebogota.jfrog.io/bancodebogota/maven-releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>bancodebogota-snapshots</name>
+			<url>https://bancodebogota.jfrog.io/bancodebogota/maven-releases</url>
+		</snapshotRepository>
+	</distributionManagement>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
