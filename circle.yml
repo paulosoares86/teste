@@ -32,6 +32,9 @@ jobs:
           paths:
             - ~/.m2
           key: v1-dependencies-{{ checksum "pom.xml" }}
-        
+
+      - run: git config --global user.email "you@example.com"
+      - run: git config --global user.name "Your Name"
+
       # make release
       - run: mvn -B release:prepare release:perform
