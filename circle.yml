@@ -3,6 +3,7 @@ machine:
     SPRING_PROFILES_ACTIVE: test
   java:
     version: oraclejdk8
+
 dependencies:
   override:
     - git config --global user.email circleci@circleci
