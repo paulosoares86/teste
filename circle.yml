@@ -12,12 +12,10 @@ dependencies:
   override:
     - git config --global user.email circleci@circleci
     - git config --global user.name CircleCI
+    - mvn --fail-never dependency:go-offline || true
 
 deployment:
   releases:
     branch: master
-      # make release
     commands:
-      - git config --global user.email "you@example.com"
-      - git config --global user.name "Your Name"
-      - mvn -B release:prepare
+      - [[ `git log -1` =~ "[maven-release-plugin]" ]] || mvn -B release:prepare
