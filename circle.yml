@@ -13,4 +13,10 @@ deployment:
   staging:
     branch: master
     commands:
-      - sh mvn_prepare.sh
+      - | # Test multiline yaml support
+        if [[ `git log -1` =~ "[maven-release-plugin]" ]]; then
+            echo "Ignoring release plugin generated version"
+        else
+            echo "Preparing release..."
+            mvn -B release:prepare
+        fi
