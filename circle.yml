@@ -17,4 +17,4 @@ deployment:
   staging:
     branch: master
     commands:
-      - [[ `git log -1` =~ "[maven-release-plugin]" ]] || mvn -B release:prepare
+      - sh eval '[[ `git log -1` =~ "[maven-release-plugin]" ]] || mvn -B release:prepare'
