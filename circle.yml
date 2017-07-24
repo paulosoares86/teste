@@ -1,44 +1,23 @@
-version: 2
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/openjdk:8-jdk
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/postgres:9.4
+machine:
 
-    working_directory: ~/repo
+  environment:
+    SPRING_PROFILES_ACTIVE: test
+    MAVEN_OPTS: -Xmx3200m
+  timezone:
+    America/Bogota
+  java:
+    version: oraclejdk8
 
-    environment:
-      # Customize the JVM maximum heap limit
-      MAVEN_OPTS: -Xmx3200m
-    
-    steps:
-      - checkout
+dependencies:
+  override:
+    - git config --global user.email circleci@circleci
+    - git config --global user.name CircleCI
 
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "pom.xml" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: mvn dependency:go-offline
-
-      - save_cache:
-          paths:
-            - ~/.m2
-          key: v1-dependencies-{{ checksum "pom.xml" }}
-
-      - run: git config --global user.email "you@example.com"
-      - run: git config --global user.name "Your Name"
-
-  deployment:
-    releases:
-      branch: master
-        # make release
-      commands:
-        - mvn -B release:prepare
+deployment:
+  releases:
+    branch: master
+      # make release
+    commands:
+      - git config --global user.email "you@example.com"
+      - git config --global user.name "Your Name"
+      - mvn -B release:prepare
