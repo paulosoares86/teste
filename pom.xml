@@ -39,8 +39,8 @@
 
 
 	<scm>
-		<connection>scm:git:file://D:\Dev\gitremotetest\testpp</connection>
-		<developerConnection>scm:git:file://D:\Dev\gitremotetest\testpp</developerConnection>
+		<connection>scm:git:git@github.com:paulosoares86/teste.git</connection>
+		<developerConnection>scm:git:git@github.com:paulosoares86/teste.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
 
