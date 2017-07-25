@@ -14,7 +14,7 @@ deployment:
   staging:
     branch: master
     commands:
-      - | 
+      - |
         if [[ `git log -1` =~ "[maven-release-plugin]" ]]; then
             echo "Ignoring release plugin generated version"
         else

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       profile="default">
+
+    <bean id="discountPropertyConfigurer" class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+        <property name="location" value="classpath:discounts.properties"/>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+    </bean>
+
+    <bean id="aaa" class="com.example.demo.Battery" >
+        <property name="name" value="${multiline}" />
+        <property name="rechargeable" value="true" />
+        <property name="price" value="${specialcustomer.discount}" />
+    </bean>
+
+    <bean id="cdrw" class="com.example.demo.Disk" >
+        <property name="price" value="1.5"/>
+        <property name="name" value="CD-RW"/>
+        <property name="capacity" value="700"/>
+    </bean>
+
+    <bean id="cashier" class="com.example.demo.Cashier" init-method="openFile" destroy-method="closeFile">
+        <property name="fileName" value="checkout"/>
+        <property name="path" value="/tmp/cashier"/>
+    </bean>
+
+    <bean id="postBeanProcessor" class="com.example.demo.AuditBeanPostProcessor" />
+
+
+    <beans profile="prod">
+        <bean id="encryptor" class="com.example.demo.Encryptor" >
+            <property name="privateKey" value="123"/>
+        </bean>
+    </beans>
+
+    <beans profile="qa">
+        <bean id="encryptor" class="com.example.demo.Encryptor" >
+            <property name="privateKey" value="456"/>
+        </bean>
+    </beans>
+</beans>
+
